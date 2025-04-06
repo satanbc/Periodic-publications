@@ -1,12 +1,10 @@
 package org.app.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor // Lombok generates a no-argument constructor
 @AllArgsConstructor // Lombok generates an all-arguments constructor
 public class Publication {

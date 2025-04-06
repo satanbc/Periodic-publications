@@ -1,17 +1,15 @@
 package org.app.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor // Lombok generates a no-arg constructor
-@AllArgsConstructor // Lombok generates an all-args constructor
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PublicationDTO {
 
-    private Long id;          // The ID field
+    private Long id;
     private String title;
     private String description;
     private double monthlyPrice;

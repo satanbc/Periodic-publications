@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!-- Security filter for JWT authentication -->
+    <filter>
+        <filter-name>JWTAuthFilter</filter-name>
+        <filter-class>org.app.filter.JWTAuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JWTAuthFilter</filter-name>
+        <url-pattern>/*</url-pattern> <!-- This will apply the filter to all URLs -->
+    </filter-mapping>
+
+    <!-- AdminServlet -->
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>org.app.controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <!-- SubscriptionServlet -->
+    <servlet>
+        <servlet-name>SubscriptionServlet</servlet-name>
+        <servlet-class>org.app.controller.SubscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubscriptionServlet</servlet-name>
+        <url-pattern>/subscriptions</url-pattern>
+    </servlet-mapping>
+
+    <!-- PaymentServlet -->
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>org.app.controller.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/payments</url-pattern>
+    </servlet-mapping>
+
+</web-app>

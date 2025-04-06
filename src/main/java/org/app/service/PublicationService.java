@@ -1,31 +1,27 @@
 package org.app.service;
 
-import org.app.dao.PublicationDao;
+import org.app.dao.PublicationDAO;
+import org.app.dto.PublicationDTO;
+import org.app.mapper.PublicationMapper;
 import org.app.model.Publication;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PublicationService {
+    private final PublicationDAO publicationDAO = new PublicationDAO();
+    private final PublicationMapper mapper = PublicationMapper.INSTANCE;
 
-    private final PublicationDao publicationDao = new PublicationDao();
-
-    public List<Publication> findAll() {
-        return publicationDao.findAll();
+    public List<PublicationDTO> getAllActivePublications() {
+        return publicationDAO.findAll()
+                .stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public Publication findById(int id) {
-        return publicationDao.findById(id);
-    }
-
-    public void create(Publication publication) {
-        publicationDao.create(publication);
-    }
-
-    public boolean update(Publication publication) {
-        return publicationDao.update(publication);
-    }
-
-    public boolean delete(int id) {
-        return publicationDao.delete(id);
+    public void addPublication(PublicationDTO dto) {
+        Publication publication = mapper.toEntity(dto);
+        publication.setActive(true); // автоматично активна при створенні
+        publicationDAO.save(publication);
     }
 }

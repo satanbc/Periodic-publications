@@ -2,10 +2,8 @@
   <artifact type="exploded-war" name="periodicals:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/periodicals_war_exploded</output-path>
     <root id="root">
-      <element id="directory" name="META-INF" />
-      <element id="directory" name="WEB-INF" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/java/org/app" />
       <element id="module-output" name="Publication" />
-      <element id="module-source" name="Publication" />
     </root>
   </artifact>
 </component>

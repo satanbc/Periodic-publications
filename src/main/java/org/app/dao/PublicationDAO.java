@@ -2,12 +2,16 @@ package org.app.dao;
 
 import org.app.model.Publication;
 import org.app.util.DBConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PublicationDAO {
+
+    private static final Logger logger = LogManager.getLogger(PublicationDAO.class);
 
     public List<Publication> findAll() {
         List<Publication> publications = new ArrayList<>();
@@ -27,7 +31,7 @@ public class PublicationDAO {
                         .build());
             }
         } catch (SQLException e) {
-            e.printStackTrace(); // заміни на логування
+            logger.error("Error retrieving publications", e);
         }
 
         return publications;
@@ -46,7 +50,7 @@ public class PublicationDAO {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error saving publication: " + publication, e);
         }
     }
 }

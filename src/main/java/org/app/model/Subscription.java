@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 @Data
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Subscription {

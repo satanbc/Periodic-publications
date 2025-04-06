@@ -13,7 +13,12 @@ export const submitSubscription = (subscriptionData) => {
     return axios.post(`${API_URL}/subscriptions`, subscriptionData);
 };
 
-// Submit payment
-export const submitPayment = (paymentData) => {
-    return axios.post(`${API_URL}/payments`, paymentData);
+export const processPayment = async (paymentData) => {
+    try {
+        const response = await axios.post('/payment', paymentData);
+        return response.data;
+    } catch (error) {
+        console.error('Error processing payment:', error);
+        throw error;
+    }
 };

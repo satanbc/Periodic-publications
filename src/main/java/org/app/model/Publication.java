@@ -2,11 +2,12 @@ package org.app.model;
 
 import lombok.*;
 
+@Data
+@Builder
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor // Lombok generates a no-argument constructor
-@AllArgsConstructor // Lombok generates an all-arguments constructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Publication {
 
     private Long id;

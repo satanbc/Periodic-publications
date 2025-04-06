@@ -2,12 +2,16 @@ package org.app.dao;
 
 import org.app.model.Payment;
 import org.app.util.DBConnectionManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentDAO {
+
+    private static final Logger logger = LogManager.getLogger(PaymentDAO.class);
 
     public void save(Payment payment) {
         String sql = "INSERT INTO payments (subscription_id, amount, payment_date, status) VALUES (?, ?, ?, ?)";
@@ -22,7 +26,7 @@ public class PaymentDAO {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error saving payment: " + payment, e);
         }
     }
 
@@ -45,7 +49,7 @@ public class PaymentDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error retrieving payments", e);
         }
 
         return list;

@@ -15,7 +15,7 @@ public class PublicationDAO {
 
     public List<Publication> findAll() {
         List<Publication> publications = new ArrayList<>();
-        String sql = "SELECT * FROM publications WHERE active = true";
+        String sql = "SELECT * FROM publications";
 
         try (Connection conn = DBConnectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -27,7 +27,6 @@ public class PublicationDAO {
                         .title(rs.getString("title"))
                         .description(rs.getString("description"))
                         .monthlyPrice(rs.getDouble("monthly_price"))
-                        .active(rs.getBoolean("active"))
                         .build());
             }
         } catch (SQLException e) {
@@ -38,7 +37,7 @@ public class PublicationDAO {
     }
 
     public void save(Publication publication) {
-        String sql = "INSERT INTO publications (title, description, monthly_price, active) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO publications (title, description, monthly_price) VALUES (?, ?, ?)";
 
         try (Connection conn = DBConnectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

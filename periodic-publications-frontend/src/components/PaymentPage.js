@@ -1,36 +1,26 @@
-// src/components/PaymentPage.js
 import React, { useState } from 'react';
 import { submitPayment } from '../api';
 
-const PaymentPage = () => {
-    const [paymentDetails, setPaymentDetails] = useState('');
+function PaymentPage() {
+    const [subscriptionId, setSubscriptionId] = useState('');
+    const [amount, setAmount] = useState('');
 
-    const handlePaymentSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const paymentData = { paymentDetails };
-        submitPayment(paymentData)
-            .then(response => alert('Payment successful!'))
-            .catch(error => console.error('Error submitting payment:', error));
+        await submitPayment({ subscriptionId, amount });
+        alert('Payment submitted');
     };
 
     return (
         <div>
-            <h2>Make a Payment</h2>
-            <form onSubmit={handlePaymentSubmit}>
-                <label>
-                    Payment Details:
-                    <input
-                        type="text"
-                        value={paymentDetails}
-                        onChange={(e) => setPaymentDetails(e.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <button type="submit">Pay</button>
+            <h1>Payment</h1>
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={subscriptionId} onChange={e => setSubscriptionId(e.target.value)} placeholder="Subscription ID" required />
+                <input type="number" value={amount} onChange={e => setAmount(e.target.value)} placeholder="Amount" required />
+                <button type="submit">Submit Payment</button>
             </form>
         </div>
     );
-};
+}
 
 export default PaymentPage;

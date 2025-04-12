@@ -1,24 +1,30 @@
-// src/api.js
-import axios from 'axios';
+const API_BASE = 'http://localhost:8080';
 
-const API_URL = 'http://localhost:8080'; // Replace with your backend URL
+export async function getPublications() {
+    const res = await fetch(`${API_BASE}/admin/publications`);
+    return res.json();
+}
 
-// Fetch all publications
-export const getPublications = () => {
-    return axios.get(`${API_URL}/publications`);
-};
+export async function addPublication(publication) {
+    return fetch(`${API_BASE}/admin/publications`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(publication),
+    });
+}
 
-// Submit subscription
-export const submitSubscription = (subscriptionData) => {
-    return axios.post(`${API_URL}/subscriptions`, subscriptionData);
-};
+export async function submitSubscription(subscription) {
+    return fetch(`${API_BASE}/subscription`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(subscription),
+    });
+}
 
-export const processPayment = async (paymentData) => {
-    try {
-        const response = await axios.post('/payment', paymentData);
-        return response.data;
-    } catch (error) {
-        console.error('Error processing payment:', error);
-        throw error;
-    }
-};
+export async function submitPayment(payment) {
+    return fetch(`${API_BASE}/payment`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payment),
+    });
+}

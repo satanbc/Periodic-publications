@@ -3,14 +3,13 @@ package org.app.controller;
 import org.apache.logging.log4j.LogManager;
 import org.app.service.PublicationService;
 import org.app.dto.PublicationDTO;
-import org.app.model.Publication;
 import org.apache.logging.log4j.Logger;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,6 +21,11 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // CORS headers
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+        response.setHeader("Access-Control-Allow-Methods", "GET");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
         String path = request.getPathInfo();
         if ("/publications".equals(path)) {
             List<PublicationDTO> publications = publicationService.getAllActivePublications();
@@ -32,6 +36,11 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // CORS headers
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+        response.setHeader("Access-Control-Allow-Methods", "POST");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         double monthlyPrice = Double.parseDouble(request.getParameter("monthlyPrice"));

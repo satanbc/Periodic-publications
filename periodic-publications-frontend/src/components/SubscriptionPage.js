@@ -1,47 +1,28 @@
-// src/components/SubscriptionPage.js
 import React, { useState } from 'react';
 import { submitSubscription } from '../api';
 
-const SubscriptionPage = () => {
+function SubscriptionPage() {
+    const [userId, setUserId] = useState('');
     const [publicationId, setPublicationId] = useState('');
-    const [userInfo, setUserInfo] = useState('');
+    const [months, setMonths] = useState('');
 
-    const handleSubscriptionSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const subscriptionData = { publicationId, userInfo };
-        submitSubscription(subscriptionData)
-            .then(response => alert('Subscription successful!'))
-            .catch(error => console.error('Error submitting subscription:', error));
+        await submitSubscription({ userId, publicationId, months });
+        alert('Subscription submitted');
     };
 
     return (
         <div>
-            <h2>Subscribe to a Publication</h2>
-            <form onSubmit={handleSubscriptionSubmit}>
-                <label>
-                    Publication ID:
-                    <input
-                        type="text"
-                        value={publicationId}
-                        onChange={(e) => setPublicationId(e.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <label>
-                    Your Information:
-                    <input
-                        type="text"
-                        value={userInfo}
-                        onChange={(e) => setUserInfo(e.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <button type="submit">Subscribe</button>
+            <h1>Subscribe to a Publication</h1>
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={userId} onChange={e => setUserId(e.target.value)} placeholder="User ID" required />
+                <input type="text" value={publicationId} onChange={e => setPublicationId(e.target.value)} placeholder="Publication ID" required />
+                <input type="number" value={months} onChange={e => setMonths(e.target.value)} placeholder="Months" required />
+                <button type="submit">Submit Subscription</button>
             </form>
         </div>
     );
-};
+}
 
 export default SubscriptionPage;

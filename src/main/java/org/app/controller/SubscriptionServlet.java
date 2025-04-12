@@ -1,14 +1,14 @@
 package org.app.controller;
 
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import org.app.service.SubscriptionService;
 import org.app.dto.SubscriptionDTO;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-import jakarta.servlet.*;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/subscription/*")
@@ -19,6 +19,11 @@ public class SubscriptionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // CORS headers
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+        response.setHeader("Access-Control-Allow-Methods", "POST");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
         Long userId = Long.parseLong(request.getParameter("userId"));
         Long publicationId = Long.parseLong(request.getParameter("publicationId"));
         int months = Integer.parseInt(request.getParameter("months"));

@@ -1,23 +1,21 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import PublicationList from './components/PublicationList';
+import PublicationsPage from './components/PublicationsPage';
 import SubscriptionPage from './components/SubscriptionPage';
 import PaymentPage from './components/PaymentPage';
-import AdminPanel from './components/AdminPanel';
+import AdminPage from './components/AdminPage';
 
-const App = () => {
+function App() {
     return (
         <Router>
-            <h1>Система Періодичні видання</h1>
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/publications" element={<PublicationList />} />
-                <Route path="/subscribe" element={<SubscriptionPage />} />
+                <Route path="/" element={<PublicationsPage />} />
+                <Route path="/subscriptions" element={<SubscriptionPage />} />
                 <Route path="/payment" element={<PaymentPage />} />
-                <Route path="/admin" element={<AdminPanel />} />
+                <Route path="/admin" element={<AdminPage />} />
             </Routes>
         </Router>
     );
-};
+}
 
 export default App;

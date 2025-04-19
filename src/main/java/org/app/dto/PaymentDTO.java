@@ -2,6 +2,8 @@ package org.app.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,10 +13,6 @@ public class PaymentDTO {
 
     private Long id;
     private Long subscriptionId;
-    private double amount;
-
-    public PaymentDTO(Long subscriptionId, double amount) {
-        this.subscriptionId = subscriptionId;
-        this.amount = amount;
-    }
+    private Double amount;
+    private LocalDate date;
 }

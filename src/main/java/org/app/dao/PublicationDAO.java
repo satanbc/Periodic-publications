@@ -36,8 +36,8 @@ public class PublicationDAO {
         return publications;
     }
 
-    public void save(Publication publication) {
-        String sql = "INSERT INTO publications (title, description, monthly_price) VALUES (?, ?, ?)";
+    public void addPublication(Publication publication) {
+        String sql = "INSERT INTO publications (title, description, monthly_price, active) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DBConnectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -46,10 +46,32 @@ public class PublicationDAO {
             stmt.setString(2, publication.getDescription());
             stmt.setDouble(3, publication.getMonthlyPrice());
             stmt.setBoolean(4, publication.isActive());
-            stmt.executeUpdate();
 
+            stmt.executeUpdate();
         } catch (SQLException e) {
-            logger.error("Error saving publication: " + publication, e);
+            logger.error("Error saving publication", e);
         }
+    }
+
+    public Publication findById(Long id) {
+        String query = "SELECT * FROM publications WHERE id = ?";
+        try (PreparedStatement stmt = DBConnectionManager.getConnection().prepareStatement(query)) {
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Якщо знайдена публікація, повертаємо її
+                return new Publication(
+                        rs.getLong("id"),
+                        rs.getString("title"),
+                        rs.getString("description"),
+                        rs.getDouble("monthly_price"),
+                        rs.getBoolean("active")  // Перевірка статусу "активності"
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Якщо публікація не знайдена
     }
 }

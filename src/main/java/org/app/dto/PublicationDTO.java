@@ -13,10 +13,4 @@ public class PublicationDTO {
     private String title;
     private String description;
     private double monthlyPrice;
-
-    public PublicationDTO(String title, String description, double monthlyPrice) {
-        this.title = title;
-        this.description = description;
-        this.monthlyPrice = monthlyPrice;
-    }
 }

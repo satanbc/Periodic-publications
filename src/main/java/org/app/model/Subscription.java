@@ -11,10 +11,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Subscription {
+
     private Long id;
     private Long userId;
     private Long publicationId;
     private int months;
     private LocalDate startDate;
     private LocalDate endDate;
+    private boolean active;
 }

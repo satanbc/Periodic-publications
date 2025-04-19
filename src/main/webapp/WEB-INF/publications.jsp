@@ -14,7 +14,7 @@
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/subscriptions">Manage Subscriptions</a></li>
+            <li><a href="/subscription">Manage Subscriptions</a></li>
             <li><a href="/login">Login</a></li>
         </ul>
     </nav>

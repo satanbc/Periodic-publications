@@ -2,7 +2,7 @@ package org.app.model;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 public class Payment {
     private Long id;
     private Long subscriptionId;
-    private double amount;
-    private LocalDateTime paymentDate;
-    private String status;
+    private Double amount;
+    private LocalDate date;
 }

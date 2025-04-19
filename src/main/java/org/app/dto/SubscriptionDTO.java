@@ -2,20 +2,21 @@ package org.app.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
+@Data
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class SubscriptionDTO {
 
     private Long id;
     private Long userId;
     private Long publicationId;
     private int months;
-
-    public SubscriptionDTO(Long publicationId, int months) {
-        this.publicationId = publicationId;
-        this.months = months;
-    }
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private boolean active;
 }

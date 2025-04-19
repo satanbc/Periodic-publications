@@ -7,6 +7,7 @@ import org.app.model.Publication;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class PublicationService {
@@ -14,20 +15,17 @@ public class PublicationService {
     private final PublicationDAO publicationDAO = new PublicationDAO();
     private final PublicationMapper mapper = PublicationMapper.INSTANCE;
 
-    public List<PublicationDTO> getAllActivePublications() {
+    public List<PublicationDTO> getAllPublications() {
         List<PublicationDTO> publications = mapper.toDTOList(publicationDAO.findAll());
-        logger.info("Fetched {} active publications", publications.size());
+        logger.info("Fetched {} publications", publications.size());
         return publications;
     }
 
-    public void addPublication(PublicationDTO dto) {
-        if (dto.getMonthlyPrice() <= 0 || dto.getTitle() == null || dto.getTitle().isBlank()) {
-            throw new IllegalArgumentException("Invalid publication data");
-        }
+    public void addPublication(Publication publication) {
+        publicationDAO.addPublication(publication);
+    }
 
-        Publication publication = mapper.toEntity(dto);
-        publication.setActive(true);
-        publicationDAO.save(publication);
-        logger.info("Added new publication: {}", publication);
+    public Publication getPublicationById(Long id) throws SQLException {
+        return publicationDAO.findById(id);
     }
 }

@@ -52,6 +52,13 @@
             <version>4.5.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.auth0/jwks-rsa -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>jwks-rsa</artifactId>
+            <version>0.22.1</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-jackson -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

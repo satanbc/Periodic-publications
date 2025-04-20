@@ -7,23 +7,21 @@ const AdminDashboard = () => {
     const [description, setDescription] = useState('');
     const [monthlyPrice, setMonthlyPrice] = useState('');
 
-    // Fetch data
     useEffect(() => {
         fetch('http://localhost:8080/publications')
             .then(res => res.json())
             .then(data => setPublications(data))
-            .catch(err => console.error('Error fetching publications:', err));
+            .catch(err => console.error('Помилка при отриманні публікацій:', err));
 
         fetch('http://localhost:8080/subscription')
             .then(res => res.json())
             .then(data => setSubscriptions(data))
-            .catch(err => console.error('Error fetching subscriptions:', err));
+            .catch(err => console.error('Помилка при отриманні підписок:', err));
     }, []);
 
-    // Add publication
     const handleAddPublication = () => {
         if (!title || !description || !monthlyPrice) {
-            alert('Please fill all fields');
+            alert('Будь ласка, заповніть усі поля');
             return;
         }
 
@@ -42,31 +40,31 @@ const AdminDashboard = () => {
                 setTitle('');
                 setDescription('');
                 setMonthlyPrice('');
-                alert('Publication added');
+                alert('Публікацію додано');
                 return fetch('http://localhost:8080/publications');
             })
             .then(res => res.json())
             .then(data => setPublications(data))
-            .catch(err => console.error('Error adding publication:', err));
+            .catch(err => console.error('Помилка при додаванні публікації:', err));
     };
 
     return (
         <div style={{ padding: '20px' }}>
-            <h1>📚 Admin Dashboard</h1>
+            <h1>📚 Панель адміністратора</h1>
 
             <section style={{ marginBottom: '40px' }}>
-                <h2>Add New Publication</h2>
+                <h2>Додати нову публікацію</h2>
                 <div>
                     <input
                         type="text"
-                        placeholder="Title"
+                        placeholder="Назва"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </div>
                 <div>
                     <textarea
-                        placeholder="Description"
+                        placeholder="Опис"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
@@ -74,26 +72,26 @@ const AdminDashboard = () => {
                 <div>
                     <input
                         type="number"
-                        placeholder="Monthly Price (UAH)"
+                        placeholder="Місячна ціна (грн)"
                         value={monthlyPrice}
                         onChange={(e) => setMonthlyPrice(e.target.value)}
                     />
                 </div>
-                <button onClick={handleAddPublication}>Add Publication</button>
+                <button onClick={handleAddPublication}>Додати публікацію</button>
             </section>
 
             <section style={{ marginBottom: '40px' }}>
-                <h2>All Publications</h2>
+                <h2>Всі публікації</h2>
                 {publications.length === 0 ? (
-                    <p>No publications found.</p>
+                    <p>Публікацій не знайдено.</p>
                 ) : (
                     <table border="1" cellPadding="10">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Monthly Price</th>
+                            <th>Назва</th>
+                            <th>Опис</th>
+                            <th>Місячна ціна</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -102,7 +100,7 @@ const AdminDashboard = () => {
                                 <td>{pub.id}</td>
                                 <td>{pub.title}</td>
                                 <td>{pub.description}</td>
-                                <td>{pub.monthlyPrice} UAH</td>
+                                <td>{pub.monthlyPrice} грн</td>
                             </tr>
                         ))}
                         </tbody>
@@ -111,32 +109,34 @@ const AdminDashboard = () => {
             </section>
 
             <section>
-                <h2>All Subscriptions</h2>
+                <h2>Всі підписки</h2>
                 {subscriptions.length === 0 ? (
-                    <p>No subscriptions found.</p>
+                    <p>Підписок не знайдено.</p>
                 ) : (
                     <table border="1" cellPadding="10">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>User ID</th>
-                            <th>Publication ID</th>
-                            <th>Months</th>
-                            <th>Start</th>
-                            <th>End</th>
-                            <th>Status</th>
+                            <th>Email користувача</th>
+                            <th>ID публікації</th>
+                            <th>Місяців</th>
+                            <th>Початок</th>
+                            <th>Кінець</th>
+                            <th>Статус</th>
+                            <th>Загальна сума</th>
                         </tr>
                         </thead>
                         <tbody>
                         {subscriptions.map((sub) => (
                             <tr key={sub.id}>
                                 <td>{sub.id}</td>
-                                <td>{sub.userId}</td>
+                                <td>{sub.email}</td>
                                 <td>{sub.publicationId}</td>
                                 <td>{sub.months}</td>
                                 <td>{new Date(sub.startDate).toLocaleDateString()}</td>
                                 <td>{new Date(sub.endDate).toLocaleDateString()}</td>
-                                <td>{sub.active ? 'Active' : 'Inactive'}</td>
+                                <td>{sub.active ? 'Активна' : 'Неактивна'}</td>
+                                <td>{sub.totalPrice + " грн"}</td>
                             </tr>
                         ))}
                         </tbody>

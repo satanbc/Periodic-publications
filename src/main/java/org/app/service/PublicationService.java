@@ -28,4 +28,4 @@ public class PublicationService {
     public Publication getPublicationById(Long id) throws SQLException {
         return publicationDAO.findById(id);
     }
-}
+    }

@@ -6,6 +6,8 @@ import com.google.gson.JsonDeserializer;
 import org.app.dto.PublicationDTO;
 import org.app.service.PublicationService;
 import org.app.model.Publication;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +22,11 @@ import java.util.List;
 @WebServlet("/publications")
 public class PublicationServlet extends HttpServlet {
 
+    private static final Logger logger = LogManager.getLogger(PublicationServlet.class);
     private final PublicationService publicationService = new PublicationService();
     private final Gson gson;
 
     public PublicationServlet() {
-        // Registering the LocalDate serializer/deserializer
         gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDate.class, (JsonDeserializer<LocalDate>) (json, typeOfT, context) ->
                         LocalDate.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE))
@@ -35,7 +37,6 @@ public class PublicationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // CORS headers
         response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -46,11 +47,13 @@ public class PublicationServlet extends HttpServlet {
         List<PublicationDTO> publications = publicationService.getAllPublications();
 
         if (publications == null) {
-            publications = List.of(); // ensure it's not null
+            publications = List.of();
         }
 
-        String json = gson.toJson(publications); // Convert to JSON using the custom Gson instance
+        String json = gson.toJson(publications);
         response.getWriter().write(json);
+
+        logger.info("Fetched {} publications", publications.size());
     }
 
     @Override
@@ -72,25 +75,19 @@ public class PublicationServlet extends HttpServlet {
                     .title(title)
                     .description(description)
                     .monthlyPrice(monthlyPrice)
-                    .active(true)  // Make sure it's set to active
+                    .active(true)
                     .build();
 
             publicationService.addPublication(newPub);
 
+            logger.info("New publication added: Title: {}, Monthly Price: {}", title, monthlyPrice);
+
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().write("{\"message\":\"Publication added successfully\"}");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Failed to add publication. Error: {}", e.getMessage(), e);
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().write("{\"error\":\"Failed to add publication\"}");
         }
     }
-
-    @Override
-    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-        resp.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    }
 }
-

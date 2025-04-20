@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const PaymentForm = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
     const subscriptionId = queryParams.get('subscriptionId');
 
@@ -21,7 +22,10 @@ const PaymentForm = () => {
                 if (!res.ok) throw new Error('Failed to fetch subscription');
                 return res.json();
             })
-            .then(data => setSubscription(data))
+            .then(data => {
+                setSubscription(data);
+                setAmount(data.totalPrice);
+            })
             .catch(err => {
                 console.error('Error fetching subscription details:', err);
                 setError(true);
@@ -37,7 +41,10 @@ const PaymentForm = () => {
                 amount,
             }),
         })
-            .then(() => alert('Payment successful'))
+            .then(() => {
+                alert('Payment successful');
+                navigate('/');
+            })
             .catch((error) => {
                 console.error('Error processing payment:', error);
                 alert('Failed to process payment');
@@ -51,7 +58,7 @@ const PaymentForm = () => {
         <div>
             <h2>Оплата підписки</h2>
             <p><strong>Видання ID:</strong> {subscription.publicationId}</p>
-            <p><strong>Користувач ID:</strong> {subscription.userId}</p>
+            <p><strong>Пошта:</strong> {subscription.email}</p>
             <p><strong>Кількість місяців:</strong> {subscription.months}</p>
 
             <form onSubmit={(e) => e.preventDefault()}>
@@ -60,8 +67,7 @@ const PaymentForm = () => {
                     <input
                         type="number"
                         value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                        required
+                        readOnly
                     />
                 </div>
                 <button type="button" onClick={handlePayment}>

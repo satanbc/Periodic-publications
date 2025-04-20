@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import './Form.css';
 
 function SubscriptionForm() {
     const location = useLocation();
     const navigate = useNavigate();
+    const { user, isAuthenticated } = useAuth0();
+
     const queryParams = new URLSearchParams(location.search);
     const publicationIdFromUrl = queryParams.get('publicationId');
 
-    const [userId, setUserId] = useState('');
     const [publicationId, setPublicationId] = useState(publicationIdFromUrl || '');
     const [months, setMonths] = useState(1);
     const [message, setMessage] = useState('');
@@ -16,8 +18,13 @@ function SubscriptionForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (!isAuthenticated || !user?.email) {
+            setMessage("Ви повинні бути авторизовані.");
+            return;
+        }
+
         const formData = new URLSearchParams();
-        formData.append('userId', userId);
+        formData.append('email', user.email);
         formData.append('publicationId', publicationId);
         formData.append('months', months);
 
@@ -41,9 +48,6 @@ function SubscriptionForm() {
         <div className="form-container">
             <h2>Оформити передплату</h2>
             <form onSubmit={handleSubmit}>
-                <label>ID Користувача:
-                    <input type="number" value={userId} onChange={(e) => setUserId(e.target.value)} required />
-                </label>
                 <label>ID Видання:
                     <input type="number" value={publicationId} onChange={(e) => setPublicationId(e.target.value)} required />
                 </label>

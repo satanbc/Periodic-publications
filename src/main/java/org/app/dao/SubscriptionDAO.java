@@ -19,15 +19,45 @@ public class SubscriptionDAO {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                subscriptions.add(Subscription.builder()
-                        .id(rs.getLong("id"))
-                        .userId(rs.getLong("user_id"))
-                        .publicationId(rs.getLong("publication_id"))
-                        .months(rs.getInt("months"))
-                        .startDate(rs.getDate("start_date").toLocalDate())
-                        .endDate(rs.getDate("end_date").toLocalDate())
-                        .active(rs.getBoolean("active"))
-                        .build());
+                subscriptions.add(new Subscription(
+                        rs.getLong("id"),
+                        rs.getString("email"),
+                        rs.getLong("publication_id"),
+                        rs.getInt("months"),
+                        rs.getDate("start_date").toLocalDate(),
+                        rs.getDate("end_date").toLocalDate(),
+                        rs.getBoolean("active"),
+                        rs.getBigDecimal("total_price")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return subscriptions;
+    }
+
+    public List<Subscription> findByEmail(String email) {
+        List<Subscription> subscriptions = new ArrayList<>();
+        String sql = "SELECT * FROM subscriptions WHERE email = ?";
+
+        try (Connection conn = DBConnectionManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                subscriptions.add(new Subscription(
+                        rs.getLong("id"),
+                        rs.getString("email"),
+                        rs.getLong("publication_id"),
+                        rs.getInt("months"),
+                        rs.getDate("start_date").toLocalDate(),
+                        rs.getDate("end_date").toLocalDate(),
+                        rs.getBoolean("active"),
+                        rs.getBigDecimal("total_price")
+                ));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,14 +69,15 @@ public class SubscriptionDAO {
     public Long addSubscription(Subscription subscription) {
         try (Connection conn = DBConnectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "INSERT INTO subscriptions (user_id, publication_id, months, start_date, end_date, active) VALUES (?, ?, ?, ?, ?, ?) RETURNING id")) {
+                     "INSERT INTO subscriptions (email, publication_id, months, start_date, end_date, active, total_price) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id")) {
 
-            stmt.setLong(1, subscription.getUserId());
+            stmt.setString(1, subscription.getEmail());
             stmt.setLong(2, subscription.getPublicationId());
             stmt.setInt(3, subscription.getMonths());
             stmt.setDate(4, Date.valueOf(subscription.getStartDate()));
             stmt.setDate(5, Date.valueOf(subscription.getEndDate()));
             stmt.setBoolean(6, subscription.isActive());
+            stmt.setBigDecimal(7, subscription.getTotalPrice());
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -69,12 +100,13 @@ public class SubscriptionDAO {
             if (rs.next()) {
                 return new SubscriptionDTO(
                         rs.getLong("id"),
-                        rs.getLong("user_id"),
+                        rs.getString("email"),
                         rs.getLong("publication_id"),
                         rs.getInt("months"),
                         rs.getDate("start_date").toLocalDate(),
                         rs.getDate("end_date").toLocalDate(),
-                        rs.getBoolean("active")
+                        rs.getBoolean("active"),
+                        rs.getBigDecimal("total_price")
                 );
             }
         } catch (SQLException e) {

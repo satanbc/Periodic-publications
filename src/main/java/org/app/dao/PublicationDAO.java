@@ -60,18 +60,17 @@ public class PublicationDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                // Якщо знайдена публікація, повертаємо її
                 return new Publication(
                         rs.getLong("id"),
                         rs.getString("title"),
                         rs.getString("description"),
                         rs.getDouble("monthly_price"),
-                        rs.getBoolean("active")  // Перевірка статусу "активності"
+                        rs.getBoolean("active")
                 );
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null; // Якщо публікація не знайдена
+        return null;
     }
 }

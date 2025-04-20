@@ -14,7 +14,6 @@
         <ul>
             <li><a href="/publications">View Publications</a></li>
             <li><a href="/subscription">Manage Subscriptions</a></li>
-            <li><a href="/login">Login</a></li>
         </ul>
     </nav>
 </header>

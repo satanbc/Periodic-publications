@@ -15,7 +15,6 @@ public class PaymentService {
     private static final Logger logger = LogManager.getLogger(PaymentService.class);
     private final PaymentDAO paymentDAO = new PaymentDAO();
     private final SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
-    private final PaymentMapper mapper = PaymentMapper.INSTANCE;
 
     public void addPayment(PaymentDTO paymentDTO) throws SQLException {
         Payment payment = new Payment(
@@ -33,12 +32,5 @@ public class PaymentService {
         } else {
             throw new IllegalArgumentException("Subscription ID is null in PaymentDTO");
         }
-    }
-
-
-    public List<PaymentDTO> getAllPayments() {
-        List<PaymentDTO> payments = mapper.toDTOList(paymentDAO.findAll());
-        logger.info("Fetched {} payments", payments.size());
-        return payments;
     }
 }

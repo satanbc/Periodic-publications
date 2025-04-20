@@ -7,7 +7,6 @@ import org.app.service.PaymentService;
 import org.app.dto.PaymentDTO;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -35,10 +34,12 @@ public class PaymentServlet extends HttpServlet {
 
             paymentService.addPayment(paymentDTO);
 
+            logger.info("Payment created successfully for Subscription ID: {}, Amount: {}", subscriptionId, amount);
+
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().write("{\"message\":\"Payment created successfully\"}");
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Failed to create payment. Error: {}", e.getMessage(), e);
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().write("{\"error\":\"Failed to create payment\"}");
         }

@@ -20,11 +20,11 @@ public class AdminServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(AdminServlet.class);
     private final PublicationService publicationService = new PublicationService();
-    private final SubscriptionService subscriptionService = new SubscriptionService(); // New service for subscriptions
+    private final SubscriptionService subscriptionService = new SubscriptionService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // CORS headers
+
         response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         response.setHeader("Access-Control-Allow-Methods", "GET");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
@@ -32,13 +32,15 @@ public class AdminServlet extends HttpServlet {
         String path = request.getPathInfo();
         if ("/publications".equals(path)) {
             List<PublicationDTO> publications = publicationService.getAllPublications();
-            List<SubscriptionDTO> subscriptions = subscriptionService.getAllSubscriptions(); // Fetch all subscriptions
+            List<SubscriptionDTO> subscriptions = subscriptionService.getAllSubscriptions();
             request.setAttribute("publications", publications);
-            request.setAttribute("subscriptions", subscriptions); // Add subscriptions to request
+            request.setAttribute("subscriptions", subscriptions);
 
-            // Forward to JSP to display both publications and subscriptions
+            logger.info("GET request for publications and subscriptions. Publications count: {}, Subscriptions count: {}", publications.size(), subscriptions.size());
+
             request.getRequestDispatcher("/admin/publications.jsp").forward(request, response);
+        } else {
+            logger.warn("Unknown path in GET request: {}", path);
         }
     }
 }
-

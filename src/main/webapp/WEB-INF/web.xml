@@ -9,4 +9,12 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Allow DELETE</web-resource-name>
+            <url-pattern>/publications/*</url-pattern>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+    </security-constraint>
+
 </web-app>

@@ -12,7 +12,7 @@ public class LocalDateAdapter extends TypeAdapter<LocalDate> {
     @Override
     public void write(JsonWriter out, LocalDate value) throws IOException {
         if (value != null) {
-            out.value(value.toString()); // ISO формат YYYY-MM-DD
+            out.value(value.toString());
         } else {
             out.nullValue();
         }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './PublicationList.css'; // We'll use this for styling
+import './PublicationList.css';
 
 function PublicationList() {
     const [publications, setPublications] = useState([]);

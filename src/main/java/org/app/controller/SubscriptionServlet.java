@@ -2,8 +2,8 @@ package org.app.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.app.dto.SubscriptionDTO;
 import org.app.model.Publication;
+import org.app.model.Subscription;
 import org.app.service.SubscriptionService;
 import org.app.service.PublicationService;
 import org.app.util.LocalDateAdapter;
@@ -46,7 +46,7 @@ public class SubscriptionServlet extends HttpServlet {
         try {
             if (idParam != null) {
                 Long id = Long.parseLong(idParam);
-                SubscriptionDTO subscription = subscriptionService.getSubscriptionById(id);
+                Subscription subscription = subscriptionService.getSubscriptionById(id);
                 if (subscription != null) {
                     response.getWriter().write(gson.toJson(subscription));
                     logger.info("Fetched subscription with ID: {}", id);
@@ -56,7 +56,7 @@ public class SubscriptionServlet extends HttpServlet {
                     logger.warn("Subscription not found for ID: {}", id);
                 }
             } else if (emailParam != null) {
-                List<SubscriptionDTO> subscriptions = subscriptionService.getSubscriptionsByEmail(emailParam);
+                List<Subscription> subscriptions = subscriptionService.getSubscriptionsByEmail(emailParam);
                 if (!subscriptions.isEmpty()) {
                     response.getWriter().write(gson.toJson(subscriptions));
                     logger.info("Fetched {} subscriptions for email: {}", subscriptions.size(), emailParam);
@@ -66,7 +66,7 @@ public class SubscriptionServlet extends HttpServlet {
                     logger.warn("No subscriptions found for email: {}", emailParam);
                 }
             } else {
-                List<SubscriptionDTO> subscriptions = subscriptionService.getAllSubscriptions();
+                List<Subscription> subscriptions = subscriptionService.getAllSubscriptions();
                 response.getWriter().write(gson.toJson(subscriptions));
                 logger.info("Fetched all subscriptions. Total count: {}", subscriptions.size());
             }
@@ -107,7 +107,7 @@ public class SubscriptionServlet extends HttpServlet {
             LocalDate startDate = LocalDate.now();
             LocalDate endDate = startDate.plusMonths(months);
 
-            SubscriptionDTO subscriptionDTO = new SubscriptionDTO(
+            Subscription subscription = new Subscription(
                     null,
                     email,
                     publicationId,
@@ -118,7 +118,7 @@ public class SubscriptionServlet extends HttpServlet {
                     totalPrice
             );
 
-            Long subscriptionId = subscriptionService.addSubscription(subscriptionDTO);
+            Long subscriptionId = subscriptionService.addSubscription(subscription);
 
             response.setStatus(HttpServletResponse.SC_OK);
             response.getWriter().write("{\"subscriptionId\":" + subscriptionId + "}");

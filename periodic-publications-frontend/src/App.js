@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import PublicationList from './components/PublicationList';

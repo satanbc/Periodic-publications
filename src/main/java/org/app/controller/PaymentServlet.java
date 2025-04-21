@@ -3,8 +3,9 @@ package org.app.controller;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+
+import org.app.model.Payment;
 import org.app.service.PaymentService;
-import org.app.dto.PaymentDTO;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +31,9 @@ public class PaymentServlet extends HttpServlet {
             Long subscriptionId = Long.parseLong(request.getParameter("subscriptionId"));
             double amount = Double.parseDouble(request.getParameter("amount"));
 
-            PaymentDTO paymentDTO = new PaymentDTO(null, subscriptionId, amount, LocalDate.now());
+            Payment payment = new Payment(null, subscriptionId, amount, LocalDate.now());
 
-            paymentService.addPayment(paymentDTO);
+            paymentService.addPayment(payment);
 
             logger.info("Payment created successfully for Subscription ID: {}, Amount: {}", subscriptionId, amount);
 

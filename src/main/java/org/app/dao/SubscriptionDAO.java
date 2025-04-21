@@ -1,6 +1,5 @@
 package org.app.dao;
 
-import org.app.dto.SubscriptionDTO;
 import org.app.model.Subscription;
 import org.app.util.DBConnectionManager;
 
@@ -89,7 +88,7 @@ public class SubscriptionDAO {
         return null;
     }
 
-    public SubscriptionDTO getSubscriptionById(Long id) {
+    public Subscription getSubscriptionById(Long id) {
         String sql = "SELECT * FROM subscriptions WHERE id = ?";
         try (Connection conn = DBConnectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -98,7 +97,7 @@ public class SubscriptionDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                return new SubscriptionDTO(
+                return new Subscription(
                         rs.getLong("id"),
                         rs.getString("email"),
                         rs.getLong("publication_id"),

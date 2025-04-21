@@ -1,9 +1,9 @@
 package org.app.controller;
 
 import org.apache.logging.log4j.LogManager;
-import org.app.dto.SubscriptionDTO;
+import org.app.model.Publication;
+import org.app.model.Subscription;
 import org.app.service.PublicationService;
-import org.app.dto.PublicationDTO;
 import org.apache.logging.log4j.Logger;
 import org.app.service.SubscriptionService;
 
@@ -31,8 +31,8 @@ public class AdminServlet extends HttpServlet {
 
         String path = request.getPathInfo();
         if ("/publications".equals(path)) {
-            List<PublicationDTO> publications = publicationService.getAllPublications();
-            List<SubscriptionDTO> subscriptions = subscriptionService.getAllSubscriptions();
+            List<Publication> publications = publicationService.getAllPublications();
+            List<Subscription> subscriptions = subscriptionService.getAllSubscriptions();
             request.setAttribute("publications", publications);
             request.setAttribute("subscriptions", subscriptions);
 

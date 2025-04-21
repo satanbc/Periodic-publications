@@ -3,7 +3,6 @@ package org.app.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
-import org.app.dto.PublicationDTO;
 import org.app.service.PublicationService;
 import org.app.model.Publication;
 import org.apache.logging.log4j.Logger;
@@ -44,7 +43,7 @@ public class PublicationServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        List<PublicationDTO> publications = publicationService.getAllPublications();
+        List<Publication> publications = publicationService.getAllPublications();
 
         if (publications == null) {
             publications = List.of();

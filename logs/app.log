@@ -1,1 +1,126 @@
 
+2025-04-21 01:03:55 [http-nio-8080-exec-5] INFO : Attempting to connect to the database...
+2025-04-21 01:03:56 [http-nio-8080-exec-5] INFO : Connection established successfully.
+2025-04-21 01:03:56 [http-nio-8080-exec-5] INFO : Fetched 7 publications
+2025-04-21 01:03:57 [http-nio-8080-exec-5] INFO : Fetched 7 publications
+2025-04-21 01:03:57 [http-nio-8080-exec-6] INFO : Attempting to connect to the database...
+2025-04-21 01:03:57 [http-nio-8080-exec-6] INFO : Connection established successfully.
+2025-04-21 01:03:57 [http-nio-8080-exec-6] INFO : Fetched 7 publications
+2025-04-21 01:03:57 [http-nio-8080-exec-6] INFO : Fetched 7 publications
+2025-04-21 01:03:59 [http-nio-8080-exec-7] INFO : Attempting to connect to the database...
+2025-04-21 01:03:59 [http-nio-8080-exec-7] INFO : Connection established successfully.
+2025-04-21 01:03:59 [http-nio-8080-exec-7] INFO : Fetched 2 subscriptions for email: admin@periodicals.app
+2025-04-21 09:33:42 [http-nio-8080-exec-6] INFO : Attempting to connect to the database...
+2025-04-21 09:33:43 [http-nio-8080-exec-6] INFO : Connection established successfully.
+2025-04-21 09:33:43 [http-nio-8080-exec-6] INFO : Fetched 7 publications
+2025-04-21 09:33:43 [http-nio-8080-exec-6] INFO : Fetched 7 publications
+2025-04-21 09:35:00 [http-nio-8080-exec-7] INFO : Attempting to connect to the database...
+2025-04-21 09:35:00 [http-nio-8080-exec-7] INFO : Connection established successfully.
+2025-04-21 09:35:00 [http-nio-8080-exec-7] INFO : Fetched 7 publications
+2025-04-21 09:35:00 [http-nio-8080-exec-7] INFO : Fetched 7 publications
+2025-04-21 09:35:07 [http-nio-8080-exec-8] INFO : Attempting to connect to the database...
+2025-04-21 09:35:07 [http-nio-8080-exec-8] INFO : Connection established successfully.
+2025-04-21 09:35:07 [http-nio-8080-exec-8] INFO : Attempting to connect to the database...
+2025-04-21 09:35:07 [http-nio-8080-exec-8] INFO : Connection established successfully.
+2025-04-21 09:35:07 [http-nio-8080-exec-8] INFO : Created new subscription. Subscription ID: 3
+2025-04-21 09:35:07 [http-nio-8080-exec-9] INFO : Attempting to connect to the database...
+2025-04-21 09:35:07 [http-nio-8080-exec-9] INFO : Connection established successfully.
+2025-04-21 09:35:07 [http-nio-8080-exec-9] INFO : Fetched subscription with ID: 3
+2025-04-21 09:35:08 [http-nio-8080-exec-10] INFO : Attempting to connect to the database...
+2025-04-21 09:35:09 [http-nio-8080-exec-10] INFO : Connection established successfully.
+2025-04-21 09:35:09 [http-nio-8080-exec-10] INFO : Attempting to connect to the database...
+2025-04-21 09:35:09 [http-nio-8080-exec-10] INFO : Connection established successfully.
+2025-04-21 09:35:09 [http-nio-8080-exec-10] INFO : Payment created successfully for Subscription ID: 3, Amount: 29.99
+2025-04-21 09:35:10 [http-nio-8080-exec-2] INFO : Attempting to connect to the database...
+2025-04-21 09:35:10 [http-nio-8080-exec-2] INFO : Connection established successfully.
+2025-04-21 09:35:10 [http-nio-8080-exec-2] INFO : Fetched 7 publications
+2025-04-21 09:35:10 [http-nio-8080-exec-2] INFO : Fetched 7 publications
+2025-04-21 09:35:12 [http-nio-8080-exec-1] INFO : Attempting to connect to the database...
+2025-04-21 09:35:12 [http-nio-8080-exec-1] INFO : Connection established successfully.
+2025-04-21 09:35:12 [http-nio-8080-exec-1] INFO : Fetched 3 subscriptions for email: admin@periodicals.app
+2025-04-21 09:35:15 [http-nio-8080-exec-3] INFO : Attempting to connect to the database...
+2025-04-21 09:35:15 [http-nio-8080-exec-4] INFO : Attempting to connect to the database...
+2025-04-21 09:35:15 [http-nio-8080-exec-4] INFO : Connection established successfully.
+2025-04-21 09:35:15 [http-nio-8080-exec-4] INFO : Fetched all subscriptions. Total count: 3
+2025-04-21 09:35:15 [http-nio-8080-exec-3] INFO : Connection established successfully.
+2025-04-21 09:35:15 [http-nio-8080-exec-3] INFO : Fetched 7 publications
+2025-04-21 09:35:15 [http-nio-8080-exec-3] INFO : Fetched 7 publications
+2025-04-21 09:35:25 [http-nio-8080-exec-6] INFO : Attempting to connect to the database...
+2025-04-21 09:35:25 [http-nio-8080-exec-6] INFO : Connection established successfully.
+2025-04-21 09:35:25 [http-nio-8080-exec-6] INFO : New publication added: Title: rsfdsfgsd, Monthly Price: 12.0
+2025-04-21 09:35:26 [http-nio-8080-exec-5] INFO : Attempting to connect to the database...
+2025-04-21 09:35:26 [http-nio-8080-exec-5] INFO : Connection established successfully.
+2025-04-21 09:35:26 [http-nio-8080-exec-5] INFO : Fetched 8 publications
+2025-04-21 09:35:26 [http-nio-8080-exec-5] INFO : Fetched 8 publications
+2025-04-21 09:36:26 [http-nio-8080-exec-9] INFO : Attempting to connect to the database...
+2025-04-21 09:36:26 [http-nio-8080-exec-10] INFO : Attempting to connect to the database...
+2025-04-21 09:36:26 [http-nio-8080-exec-9] INFO : Connection established successfully.
+2025-04-21 09:36:26 [http-nio-8080-exec-10] INFO : Connection established successfully.
+2025-04-21 09:36:26 [http-nio-8080-exec-9] INFO : Fetched 8 publications
+2025-04-21 09:36:26 [http-nio-8080-exec-10] INFO : Fetched all subscriptions. Total count: 3
+2025-04-21 09:36:26 [http-nio-8080-exec-9] INFO : Fetched 8 publications
+2025-04-21 09:42:00 [http-nio-8080-exec-7] INFO : Attempting to connect to the database...
+2025-04-21 09:42:01 [http-nio-8080-exec-7] INFO : Connection established successfully.
+2025-04-21 09:42:01 [http-nio-8080-exec-6] INFO : Connection established successfully.
+2025-04-21 09:42:01 [http-nio-8080-exec-6] INFO : Fetched 8 publications
+2025-04-21 09:42:01 [http-nio-8080-exec-7] INFO : Fetched all subscriptions. Total count: 3
+2025-04-21 09:42:01 [http-nio-8080-exec-6] INFO : Fetched 8 publications
+2025-04-21 09:42:26 [http-nio-8080-exec-1] INFO : Attempting to connect to the database...
+2025-04-21 09:42:26 [http-nio-8080-exec-10] INFO : Attempting to connect to the database...
+2025-04-21 09:42:26 [http-nio-8080-exec-1] INFO : Connection established successfully.
+2025-04-21 09:42:26 [http-nio-8080-exec-10] INFO : Connection established successfully.
+2025-04-21 09:42:26 [http-nio-8080-exec-10] INFO : Fetched 7 publications
+2025-04-21 09:42:26 [http-nio-8080-exec-1] INFO : Fetched all subscriptions. Total count: 3
+2025-04-21 09:42:26 [http-nio-8080-exec-10] INFO : Fetched 7 publications
+2025-04-21 09:42:32 [http-nio-8080-exec-2] INFO : Attempting to connect to the database...
+2025-04-21 09:42:32 [http-nio-8080-exec-2] INFO : Connection established successfully.
+2025-04-21 09:42:32 [http-nio-8080-exec-2] INFO : Fetched 7 publications
+2025-04-21 09:42:32 [http-nio-8080-exec-2] INFO : Fetched 7 publications
+2025-04-21 09:42:38 [http-nio-8080-exec-3] INFO : Attempting to connect to the database...
+2025-04-21 09:42:38 [http-nio-8080-exec-3] INFO : Connection established successfully.
+2025-04-21 09:42:38 [http-nio-8080-exec-3] INFO : Attempting to connect to the database...
+2025-04-21 09:42:38 [http-nio-8080-exec-3] INFO : Connection established successfully.
+2025-04-21 09:42:38 [http-nio-8080-exec-3] INFO : Created new subscription. Subscription ID: 4
+2025-04-21 09:42:38 [http-nio-8080-exec-4] INFO : Attempting to connect to the database...
+2025-04-21 09:42:38 [http-nio-8080-exec-4] INFO : Connection established successfully.
+2025-04-21 09:42:38 [http-nio-8080-exec-4] INFO : Fetched subscription with ID: 4
+2025-04-21 09:42:49 [http-nio-8080-exec-7] INFO : Attempting to connect to the database...
+2025-04-21 09:42:49 [http-nio-8080-exec-7] INFO : Connection established successfully.
+2025-04-21 09:42:49 [http-nio-8080-exec-7] INFO : Fetched 4 subscriptions for email: admin@periodicals.app
+2025-04-21 09:42:51 [http-nio-8080-exec-6] INFO : Attempting to connect to the database...
+2025-04-21 09:42:51 [http-nio-8080-exec-6] INFO : Connection established successfully.
+2025-04-21 09:42:51 [http-nio-8080-exec-6] INFO : Fetched subscription with ID: 4
+2025-04-21 09:42:53 [http-nio-8080-exec-8] INFO : Attempting to connect to the database...
+2025-04-21 09:42:53 [http-nio-8080-exec-8] INFO : Connection established successfully.
+2025-04-21 09:42:53 [http-nio-8080-exec-8] INFO : Attempting to connect to the database...
+2025-04-21 09:42:53 [http-nio-8080-exec-8] INFO : Connection established successfully.
+2025-04-21 09:42:53 [http-nio-8080-exec-8] INFO : Payment created successfully for Subscription ID: 4, Amount: 426.0
+2025-04-21 09:42:54 [http-nio-8080-exec-9] INFO : Attempting to connect to the database...
+2025-04-21 09:42:54 [http-nio-8080-exec-9] INFO : Connection established successfully.
+2025-04-21 09:42:54 [http-nio-8080-exec-9] INFO : Fetched 7 publications
+2025-04-21 09:42:54 [http-nio-8080-exec-9] INFO : Fetched 7 publications
+2025-04-21 09:42:56 [http-nio-8080-exec-1] INFO : Attempting to connect to the database...
+2025-04-21 09:42:56 [http-nio-8080-exec-1] INFO : Connection established successfully.
+2025-04-21 09:42:56 [http-nio-8080-exec-1] INFO : Fetched 4 subscriptions for email: admin@periodicals.app
+2025-04-21 09:43:00 [http-nio-8080-exec-10] INFO : Attempting to connect to the database...
+2025-04-21 09:43:00 [http-nio-8080-exec-10] INFO : Connection established successfully.
+2025-04-21 09:43:00 [http-nio-8080-exec-10] INFO : Fetched 7 publications
+2025-04-21 09:43:00 [http-nio-8080-exec-10] INFO : Fetched 7 publications
+2025-04-21 09:43:13 [http-nio-8080-exec-2] INFO : Attempting to connect to the database...
+2025-04-21 09:43:13 [http-nio-8080-exec-2] INFO : Connection established successfully.
+2025-04-21 09:43:13 [http-nio-8080-exec-2] INFO : Fetched 4 subscriptions for email: admin@periodicals.app
+2025-04-21 09:43:13 [http-nio-8080-exec-3] INFO : Attempting to connect to the database...
+2025-04-21 09:43:13 [http-nio-8080-exec-4] INFO : Attempting to connect to the database...
+2025-04-21 09:43:13 [http-nio-8080-exec-3] INFO : Connection established successfully.
+2025-04-21 09:43:13 [http-nio-8080-exec-3] INFO : Fetched 7 publications
+2025-04-21 09:43:13 [http-nio-8080-exec-3] INFO : Fetched 7 publications
+2025-04-21 09:43:13 [http-nio-8080-exec-4] INFO : Connection established successfully.
+2025-04-21 09:43:13 [http-nio-8080-exec-4] INFO : Fetched all subscriptions. Total count: 4
+2025-04-21 09:43:15 [http-nio-8080-exec-5] INFO : Attempting to connect to the database...
+2025-04-21 09:43:16 [http-nio-8080-exec-5] INFO : Connection established successfully.
+2025-04-21 09:43:16 [http-nio-8080-exec-5] INFO : Fetched 7 publications
+2025-04-21 09:43:16 [http-nio-8080-exec-5] INFO : Fetched 7 publications
+2025-04-21 09:43:24 [http-nio-8080-exec-7] INFO : Attempting to connect to the database...
+2025-04-21 09:43:24 [http-nio-8080-exec-7] INFO : Connection established successfully.
+2025-04-21 09:43:24 [http-nio-8080-exec-7] INFO : Fetched 7 publications
+2025-04-21 09:43:24 [http-nio-8080-exec-7] INFO : Fetched 7 publications

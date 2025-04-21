@@ -1,7 +1,6 @@
 package org.app.service;
 
 import org.app.dao.SubscriptionDAO;
-import org.app.dto.SubscriptionDTO;
 import org.app.model.Subscription;
 
 import java.util.List;
@@ -11,10 +10,10 @@ public class SubscriptionService {
 
     private final SubscriptionDAO subscriptionDAO = new SubscriptionDAO();
 
-    public List<SubscriptionDTO> getAllSubscriptions() {
+    public List<Subscription> getAllSubscriptions() {
         List<Subscription> subscriptions = subscriptionDAO.findAll();
         return subscriptions.stream()
-                .map(subscription -> new SubscriptionDTO(
+                .map(subscription -> new Subscription(
                         subscription.getId(),
                         subscription.getEmail(),
                         subscription.getPublicationId(),
@@ -27,10 +26,10 @@ public class SubscriptionService {
                 .collect(Collectors.toList());
     }
 
-    public List<SubscriptionDTO> getSubscriptionsByEmail(String email) {
+    public List<Subscription> getSubscriptionsByEmail(String email) {
         List<Subscription> subscriptions = subscriptionDAO.findByEmail(email);
         return subscriptions.stream()
-                .map(subscription -> new SubscriptionDTO(
+                .map(subscription -> new Subscription(
                         subscription.getId(),
                         subscription.getEmail(),
                         subscription.getPublicationId(),
@@ -43,23 +42,13 @@ public class SubscriptionService {
                 .collect(Collectors.toList());
     }
 
-    public Long addSubscription(SubscriptionDTO dto) {
-        Subscription subscription = new Subscription(
-                null,
-                dto.getEmail(),
-                dto.getPublicationId(),
-                dto.getMonths(),
-                dto.getStartDate(),
-                dto.getEndDate(),
-                dto.isActive(),
-                dto.getTotalPrice()
-        );
+    public Long addSubscription(Subscription subscription) {
 
         return subscriptionDAO.addSubscription(subscription);
     }
 
 
-    public SubscriptionDTO getSubscriptionById(Long id) {
+    public Subscription getSubscriptionById(Long id) {
         return subscriptionDAO.getSubscriptionById(id);
     }
 }

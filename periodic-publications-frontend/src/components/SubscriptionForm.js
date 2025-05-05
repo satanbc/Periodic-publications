@@ -11,7 +11,7 @@ function SubscriptionForm() {
     const queryParams = new URLSearchParams(location.search);
     const publicationIdFromUrl = queryParams.get('publicationId');
 
-    const [publicationId, setPublicationId] = useState(publicationIdFromUrl || '');
+    const [publicationId] = useState(publicationIdFromUrl || '');
     const [months, setMonths] = useState(1);
     const [message, setMessage] = useState('');
 
@@ -49,7 +49,7 @@ function SubscriptionForm() {
             <h2>Оформити передплату</h2>
             <form onSubmit={handleSubmit}>
                 <label>ID Видання:
-                    <input type="number" value={publicationId} onChange={(e) => setPublicationId(e.target.value)} required />
+                    <input type="number" value={publicationId} readOnly/>
                 </label>
                 <label>Кількість місяців:
                     <input type="number" value={months} onChange={(e) => setMonths(e.target.value)} min="1" required />

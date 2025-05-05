@@ -1,5 +1,7 @@
 package org.app.dao;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.app.model.Subscription;
 import org.app.util.DBConnectionManager;
 
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubscriptionDAO {
+
+    private static final Logger logger = LogManager.getLogger(SubscriptionDAO.class);
 
     public List<Subscription> findAll() {
         List<Subscription> subscriptions = new ArrayList<>();
@@ -30,7 +34,7 @@ public class SubscriptionDAO {
                 ));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error retrieving subscriptions", e);
         }
 
         return subscriptions;
@@ -59,7 +63,7 @@ public class SubscriptionDAO {
                 ));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error finding subscription by email", e);
         }
 
         return subscriptions;
@@ -83,7 +87,7 @@ public class SubscriptionDAO {
                 return rs.getLong("id");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error adding subscriptions", e);
         }
         return null;
     }
@@ -109,7 +113,7 @@ public class SubscriptionDAO {
                 );
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error retrieving subscriptions by id", e);
         }
         return null;
     }

@@ -25,7 +25,7 @@ public class PaymentDAO {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error adding payment", e);
         }
     }
 
@@ -47,7 +47,7 @@ public class PaymentDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error retrieving payments", e);
         }
 
         return payments;
